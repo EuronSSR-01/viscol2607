@@ -163,6 +163,7 @@ def test_mock_server_roundtrip(monkeypatch, png_file, tmp_path):
             body = self.rfile.read(length)
             captured["path"] = self.path
             captured["auth"] = self.headers.get("Authorization")
+            captured["user_agent"] = self.headers.get("User-Agent")
             captured["body"] = json.loads(body.decode("utf-8"))
             payload = {
                 "choices": [
@@ -206,6 +207,7 @@ def test_mock_server_roundtrip(monkeypatch, png_file, tmp_path):
         assert FAKE_KEY not in json.dumps(result)
         assert captured["path"].endswith("/chat/completions")
         assert captured["auth"] == f"Bearer {FAKE_KEY}"
+        assert captured["user_agent"] == "VisCol/1.0"
         assert captured["body"]["model"] == "vision-model"
         content = captured["body"]["messages"][0]["content"]
         assert any(

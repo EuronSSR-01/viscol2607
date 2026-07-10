@@ -13,6 +13,7 @@ def post_json(url: str, headers: dict[str, str], payload: dict[str, Any], timeou
     req = urllib.request.Request(url, data=data, method="POST")
     for k, v in headers.items():
         req.add_header(k, v)
+    req.add_header("User-Agent", "VisCol/1.0")
     req.add_header("Content-Type", "application/json")
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
