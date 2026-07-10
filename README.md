@@ -1,5 +1,7 @@
 # VisCol
 
+English | [简体中文](README.zh-CN.md)
+
 VisCol is a **Claude Code Plugin** that gives coding agents reliable visual understanding through a **user-provided OpenAI-compatible multimodal** API (`/chat/completions`).
 
 V1 supports **Claude Code only**.

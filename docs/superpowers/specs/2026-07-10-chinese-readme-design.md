@@ -1,23 +1,23 @@
-# Chinese README design
+# 中文 README 设计
 
-## Goal
+## 目标
 
-Add a maintained Simplified Chinese entry point for VisCol without changing plugin behavior or weakening any security guidance.
+为 VisCol 增加可持续维护的简体中文入口，同时不改变插件行为，也不弱化任何安全说明。
 
-## Structure
+## 结构
 
-- Keep `README.md` as the default English landing page.
-- Add `README.zh-CN.md` as a section-for-section Simplified Chinese translation.
-- Add a language switch at the top of both files: `English | 简体中文`.
-- Keep commands, filenames, environment variables, model/API terminology, links, and security requirements technically identical across both versions.
+- 保留 `README.md` 作为默认英文首页。
+- 新增 `README.zh-CN.md`，按照英文版章节逐节翻译为简体中文。
+- 在两个文件顶部增加语言切换：`English | 简体中文`。
+- 两个版本中的命令、文件名、环境变量、模型/API 术语、链接和安全要求在技术含义上必须完全一致。
 
-## Scope
+## 范围
 
-Translate the existing README only. Do not add new features, provider-specific setup, credentials, release tags, or unrelated documentation changes.
+只翻译现有 README，不增加新功能、特定 Provider 配置、凭据、发布标签或无关文档修改。
 
-## Verification
+## 验证
 
-- Confirm both language links resolve to repository files.
-- Compare headings and code blocks so the two versions remain structurally aligned.
-- Run plugin strict validation, the test suite, secret scanning, and placeholder scanning.
-- Require a clean Git diff containing only the approved documentation files and this design record.
+- 确认两个语言链接都能指向仓库中实际存在的文件。
+- 对比标题和代码块，确保两个版本的结构保持一致。
+- 运行插件严格校验、完整测试、密钥扫描和占位符扫描。
+- Git 差异只能包含已批准的文档文件和本设计记录。
