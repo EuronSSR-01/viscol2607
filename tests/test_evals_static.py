@@ -53,9 +53,12 @@ def test_cases_are_utf8_relative_and_private_free():
         assert "total_cost_usd" not in text
 
 
-def test_coverage_diff_report_exists():
-    report = RC / "_work" / "evals-coverage-diff.md"
-    assert report.is_file()
-    text = report.read_text(encoding="utf-8")
-    for needle in ("已保留", "新增", "发布前", "claude plugin eval"):
-        assert needle in text
+def test_public_tests_do_not_depend_on_ignored_process_artifacts():
+    private_dir = "_" + "work"
+    forbidden = (f'RC / "{private_dir}"', f"RC / '{private_dir}'")
+    offenders = []
+    for test_path in (RC / "tests").glob("test_*.py"):
+        text = test_path.read_text(encoding="utf-8")
+        if any(pattern in text for pattern in forbidden):
+            offenders.append(test_path.name)
+    assert offenders == []
