@@ -1,0 +1,22 @@
+[project]
+name = "viscol"
+version = "0.1.0"
+description = "Claude Code plugin: visual understanding via a user-provided OpenAI-compatible multimodal API."
+requires-python = ">=3.10"
+# V1 runtime uses the Python standard library only. No runtime third-party deps.
+# README.md is added in Task 7; do not reference a missing readme here.
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0",
+  "jsonschema>=4.0",
+]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

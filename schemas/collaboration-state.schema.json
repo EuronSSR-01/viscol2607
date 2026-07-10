@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:viscol:schema:collaboration-state:1.0.0",
+  "title": "VisCol Collaboration State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["state"],
+  "properties": {
+    "state": {
+      "type": "string",
+      "enum": [
+        "UNCONFIGURED",
+        "AWAITING_UPLOAD_CONFIRMATION",
+        "IN_PROGRESS",
+        "SUCCEEDED",
+        "FAILED",
+        "STOPPED_UNCERTAIN"
+      ]
+    },
+    "reason": { "type": "string" },
+    "budgets": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "MAX_VISUAL_CALLS": { "type": "integer", "minimum": 1 },
+        "MAX_PROVIDER_ATTEMPTS": { "type": "integer", "minimum": 1 },
+        "MAX_REPAIR_ROUNDS": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

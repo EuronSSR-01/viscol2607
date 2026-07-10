@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:viscol:schema:visual-evidence:1.0.0",
+  "title": "Visual Evidence Package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "task_id",
+    "task_type",
+    "selected_skill",
+    "input_images",
+    "trusted_facts",
+    "inferred",
+    "not_visible",
+    "uncertain",
+    "confidence",
+    "confidence_source",
+    "risk_level",
+    "recommended_next_action",
+    "verification_required"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0.0" },
+    "task_id": { "type": "string", "minLength": 1 },
+    "task_type": { "type": "string", "minLength": 1 },
+    "selected_skill": { "type": "string", "minLength": 1 },
+    "input_images": { "type": "array", "items": { "type": "string" } },
+    "trusted_facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fact_id", "statement", "evidence_refs", "confidence", "confidence_source"],
+        "properties": {
+          "fact_id": { "type": "string" },
+          "statement": { "type": "string" },
+          "evidence_refs": { "type": "array", "items": { "type": "string" } },
+          "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+          "confidence_source": {
+            "type": "string",
+            "enum": ["downstream_model", "verifier", "deterministic_check", "unknown"]
+          }
+        }
+      }
+    },
+    "inferred": { "type": "array", "items": { "type": "string" } },
+    "not_visible": { "type": "array", "items": { "type": "string" } },
+    "uncertain": { "type": "array", "items": { "type": "string" } },
+    "regions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["region_id", "image_ref", "coordinate_space", "region", "description"],
+        "properties": {
+          "region_id": { "type": "string" },
+          "image_ref": { "type": "string" },
+          "coordinate_space": { "type": "string", "const": "normalized_0_1000" },
+          "region": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["x", "y", "w", "h"],
+            "properties": {
+              "x": { "type": "number", "minimum": 0, "maximum": 1000 },
+              "y": { "type": "number", "minimum": 0, "maximum": 1000 },
+              "w": { "type": "number", "exclusiveMinimum": 0, "maximum": 1000 },
+              "h": { "type": "number", "exclusiveMinimum": 0, "maximum": 1000 }
+            }
+          },
+          "description": { "type": "string" },
+          "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "confidence_source": {
+      "type": "string",
+      "enum": ["downstream_model", "verifier", "deterministic_check", "unknown"]
+    },
+    "risk_level": { "type": "string", "enum": ["low", "medium", "high"] },
+    "recommended_next_action": { "type": "string" },
+    "verification_required": { "type": "boolean" }
+  }
+}

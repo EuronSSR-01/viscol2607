@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "viscol",
+  "displayName": "VisCol",
+  "version": "0.1.0",
+  "description": "Give Claude Code visual understanding through a user-provided OpenAI-compatible multimodal model.",
+  "author": {
+    "name": "EuronSSR-01",
+    "url": "https://github.com/EuronSSR-01"
+  },
+  "homepage": "https://github.com/EuronSSR-01/viscol2607",
+  "repository": "https://github.com/EuronSSR-01/viscol2607",
+  "license": "MIT",
+  "defaultEnabled": false,
+  "userConfig": {
+    "vision_base_url": {
+      "type": "string",
+      "title": "Vision API Base URL",
+      "description": "Base URL of an OpenAI-compatible multimodal API.",
+      "required": true
+    },
+    "vision_model_id": {
+      "type": "string",
+      "title": "Vision Model ID",
+      "description": "Model identifier of the multimodal model.",
+      "required": true
+    },
+    "vision_api_key": {
+      "type": "string",
+      "title": "Vision API Key",
+      "description": "API key used only for requests to the configured vision provider.",
+      "sensitive": true,
+      "required": true
+    }
+  }
+}

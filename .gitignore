@@ -1,0 +1,12 @@
+﻿# VisCol release-candidate local/process artifacts — do not publish
+_work/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.log
+.DS_Store
+Thumbs.db
+evals/results/

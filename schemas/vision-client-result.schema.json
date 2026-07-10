@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:viscol:schema:vision-client-result:1.0.0",
+  "title": "Vision Client Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ok", "error_code"],
+  "properties": {
+    "ok": { "type": "boolean" },
+    "error_code": {
+      "type": ["string", "null"],
+      "enum": [
+        null,
+        "CONFIG_MISSING",
+        "CONFIG_INVALID_URL",
+        "UPLOAD_NOT_CONFIRMED",
+        "INVALID_IMAGE",
+        "INVALID_REQUEST_FILE",
+        "NETWORK_ERROR",
+        "RAW_DISABLED"
+      ]
+    },
+    "message": { "type": "string" },
+    "model": { "type": "string" },
+    "result": { "type": "string" }
+  }
+}

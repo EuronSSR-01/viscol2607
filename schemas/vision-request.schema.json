@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:viscol:schema:vision-request:1.0.0",
+  "title": "Vision Client Request File",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task", "image_paths", "user_question", "upload_confirmed"],
+  "properties": {
+    "task": {
+      "type": "string",
+      "enum": ["describe", "ocr", "compare", "ui_extract", "ui_compare"]
+    },
+    "image_paths": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1,
+      "maxItems": 4
+    },
+    "user_question": { "type": "string" },
+    "upload_confirmed": { "type": "boolean" }
+  }
+}
