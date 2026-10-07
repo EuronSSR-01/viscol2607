@@ -1,0 +1,12 @@
+title = "SSR upload protection"
+[extend]
+useDefault = true
+
+[[rules]]
+id = "chinese-password-record"
+description = "Plaintext password beneath a Chinese heading"
+regex = '''(?im)(?:^|\n)[# \t]*密码[ \t]*[:：]?[ \t]*\r?\n(?:[ \t]*\r?\n)*[ \t]*([^\s<>\[\]]{6,100})'''
+secretGroup = 1
+[[rules.allowlists]]
+regexTarget = "secret"
+regexes = ['''(?i)^(?:example|placeholder|redacted|your[-_ ]|示例|占位)''']
